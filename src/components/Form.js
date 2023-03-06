@@ -2,54 +2,102 @@ import React from 'react';
 
 class Form extends React.Component {
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1, cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick
+    } = this.props;
+
     return (
       <form>
         <fieldset>
           <label>
             Nome da Carta:
-            <input data-testid="name-input" type="text" />
+            <input
+              value={ cardName }
+              onChange={ onInputChange }
+              data-testid="name-input"
+              type="text"
+            />
           </label>
         </fieldset>
 
         <fieldset>
           <label>
             Descrição:
-            <textarea data-testid="description-input" type="text" />
+            <textarea
+              value={ cardDescription }
+              onChange={ onInputChange }
+              data-testid="description-input"
+              type="text"
+            />
           </label>
         </fieldset>
 
         <fieldset>
           <label>
             Primeiro Atributo:
-            <input data-testid="attr1-input" type="number" />
+            <input
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+              data-testid="attr1-input"
+              type="number"
+            />
           </label>
         </fieldset>
 
         <fieldset>
           <label>
             Segundo Atributo:
-            <input data-testid="attr2-input" type="number" />
+            <input
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+              data-testid="attr2-input"
+              type="number"
+            />
           </label>
         </fieldset>
 
         <fieldset>
           <label>
             Terceiro Atributo:
-            <input data-testid="attr3-input" type="number" />
+            <input
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+              data-testid="attr3-input"
+              type="number"
+            />
           </label>
         </fieldset>
 
         <fieldset>
           <label>
             Imagem:
-            <input data-testid="image-input" type="text" />
+            <input
+              value={ cardImage }
+              onChange={ onInputChange }
+              data-testid="image-input"
+              type="text"
+            />
           </label>
         </fieldset>
 
         <fieldset>
           <label>
             Raridade:
-            <select data-testid="rare-input">
+            <select
+              value={ cardRare }
+              onChange={ onInputChange }
+              data-testid="rare-input"
+            >
               <option>normal</option>
               <option>raro</option>
               <option>muito raro</option>
@@ -60,11 +108,22 @@ class Form extends React.Component {
         <fieldset>
           <label>
             Super Trunfo:
-            <input data-testid="trunfo-input" type="checkbox" />
+            <input
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+              data-testid="trunfo-input"
+              type="checkbox"
+            />
           </label>
         </fieldset>
 
-        <button data-testid="save-button">Salvar</button>
+        <button
+          data-testid="save-button"
+          disabled={ isSaveButtonDisabled }
+          onClick={ onSaveButtonClick }
+        >
+          Salvar
+        </button>
       </form>
     );
   }
