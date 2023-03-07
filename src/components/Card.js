@@ -33,10 +33,19 @@ class Card extends React.Component {
           >
             { cardDescription }
           </p>
-          <div className="p-container">
-            <p data-testid="attr1-card">{ cardAttr1 }</p>
-            <p data-testid="attr2-card">{ cardAttr2 }</p>
-            <p data-testid="attr3-card">{ cardAttr3 }</p>
+          <div className="ps-container">
+            <div className="p-container">
+              <span>Attr01 ...........................</span>
+              <p data-testid="attr1-card">{ cardAttr1 }</p>
+            </div>
+            <div className="p-container">
+              <span>Attr02 ...........................</span>
+              <p data-testid="attr2-card">{ cardAttr2 }</p>
+            </div>
+            <div className="p-container">
+              <span>Attr03 ...........................</span>
+              <p data-testid="attr3-card">{ cardAttr3 }</p>
+            </div>
             <p data-testid="rare-card">{ cardRare }</p>
           </div>
           { cardTrunfo

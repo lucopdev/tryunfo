@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap' ) ;
+
 * {
   box-sizing: border-box;
+  font-family: Kanit , sans-serif;
   font-size: 12px;
+  font-weight: 700;
   margin: 0;
   padding: 0;
 }
@@ -26,4 +30,20 @@ body {
   height: 600px;
   justify-content: space-evenly;
   width: 70vw;
+}
+
+.input-group-text {
+  background-color: white;
+}
+
+.form-control:focus, .form-control:active {
+  border: 1px solid rgb(0, 76, 95);
+  box-shadow: none;
+  resize: none;
+}
+
+.form-select {
+  background-color: rgb(0, 76, 95);
+  color: white;
+  width: 100%;
 }

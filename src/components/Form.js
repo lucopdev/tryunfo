@@ -107,8 +107,10 @@ class Form extends React.Component {
 
         <fieldset>
           <label>
-            Raridade:
+            Selecione a raridade
             <select
+              className="form-select"
+              aria-label="Default select example"
               name="cardRare"
               value={ cardRare }
               onChange={ onInputChange }
