@@ -33,13 +33,13 @@ class App extends React.Component {
     + Number(cardAttr2)
     + Number(cardAttr3)) > attSumMax) possibleSum = false;
 
-    if (cardAttr1 > attMax
-      || cardAttr2 > attMax
-      || cardAttr3 > attMax) possibleSum = false;
+    if (Number(cardAttr1) > attMax
+      || Number(cardAttr2) > attMax
+      || Number(cardAttr3) > attMax) possibleSum = false;
 
-    if (cardAttr1 < 0
-      || cardAttr2 < 0
-      || cardAttr3 < 0) possibleSum = false;
+    if (Number(cardAttr1) < 0
+      || Number(cardAttr2) < 0
+      || Number(cardAttr3) < 0) possibleSum = false;
     return possibleSum;
   };
 
@@ -66,6 +66,20 @@ class App extends React.Component {
     }, this.handleErrors);
   };
 
+  testHasTrunfo = () => {
+    const { cardBoard } = this.state;
+    const findedTrunfo = cardBoard.find((card) => card.cardTrunfo === true);
+    if (findedTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    } else {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
+  };
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const {
@@ -75,7 +89,6 @@ class App extends React.Component {
       cardAttr3, cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
     } = this.state;
 
     const addCard = {
@@ -87,7 +100,6 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
     };
     this.setState((currentState) => (
       { cardBoard: [addCard, ...currentState.cardBoard],
@@ -99,9 +111,8 @@ class App extends React.Component {
         cardImage: '',
         cardRare: 'normal',
         cardTrunfo: false,
-        hasTrunfo: false,
       }
-    ));
+    ), this.testHasTrunfo);
   };
 
   render() {
@@ -117,7 +128,6 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
-
     return (
       <div>
         <h1>Tryunfo</h1>
