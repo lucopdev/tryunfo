@@ -20,7 +20,7 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <form className="form-main">
+      <form className="form-main" onSubmit={ onSaveButtonClick }>
         <fieldset className="input-group mb-3">
           <span className="input-group-text">
             Nome da Carta:
@@ -116,10 +116,9 @@ class Form extends React.Component {
               onChange={ onInputChange }
               data-testid="rare-input"
             >
-              <option>normal</option>
-              <option>raro</option>
-              <option>muito raro</option>
-              <option selected> </option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito-raro">muito raro</option>
             </select>
           </label>
         </fieldset>
@@ -141,7 +140,7 @@ class Form extends React.Component {
         <button
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
+          type="submit"
         >
           Salvar
         </button>
