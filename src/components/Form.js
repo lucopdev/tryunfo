@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Form.css';
 
 class Form extends React.Component {
   render() {
@@ -12,90 +13,96 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
 
     return (
-      <form>
-        <fieldset>
-          <label>
+      <form className="form-main">
+        <fieldset className="input-group mb-3">
+          <span className="input-group-text">
             Nome da Carta:
-            <input
-              name="cardName"
-              value={ cardName }
-              onChange={ onInputChange }
-              data-testid="name-input"
-              type="text"
-            />
-          </label>
+          </span>
+          <input
+            className="form-control"
+            name="cardName"
+            value={ cardName }
+            onChange={ onInputChange }
+            data-testid="name-input"
+            type="text"
+          />
         </fieldset>
 
-        <fieldset>
-          <label>
+        <fieldset className="input-group mb-3">
+          <span className="input-group-text">
             Descrição:
-            <textarea
-              name="cardDescription"
-              value={ cardDescription }
-              onChange={ onInputChange }
-              data-testid="description-input"
-              type="text"
-            />
-          </label>
+          </span>
+          <textarea
+            className="form-control"
+            name="cardDescription"
+            value={ cardDescription }
+            onChange={ onInputChange }
+            data-testid="description-input"
+            type="text"
+          />
         </fieldset>
 
-        <fieldset>
-          <label>
+        <fieldset className="input-group mb-3">
+          <span className="input-group-text">
             Primeiro Atributo:
-            <input
-              name="cardAttr1"
-              value={ cardAttr1 }
-              onChange={ onInputChange }
-              data-testid="attr1-input"
-              type="number"
-            />
-          </label>
+          </span>
+          <input
+            className="form-control"
+            name="cardAttr1"
+            value={ cardAttr1 }
+            onChange={ onInputChange }
+            data-testid="attr1-input"
+            type="number"
+          />
         </fieldset>
 
-        <fieldset>
-          <label>
+        <fieldset className="input-group mb-3">
+          <span className="input-group-text">
             Segundo Atributo:
-            <input
-              name="cardAttr2"
-              value={ cardAttr2 }
-              onChange={ onInputChange }
-              data-testid="attr2-input"
-              type="number"
-            />
-          </label>
+          </span>
+          <input
+            className="form-control"
+            name="cardAttr2"
+            value={ cardAttr2 }
+            onChange={ onInputChange }
+            data-testid="attr2-input"
+            type="number"
+          />
         </fieldset>
 
-        <fieldset>
-          <label>
+        <fieldset className="input-group mb-3">
+          <span className="input-group-text">
             Terceiro Atributo:
-            <input
-              name="cardAttr3"
-              value={ cardAttr3 }
-              onChange={ onInputChange }
-              data-testid="attr3-input"
-              type="number"
-            />
-          </label>
+          </span>
+          <input
+            className="form-control"
+            name="cardAttr3"
+            value={ cardAttr3 }
+            onChange={ onInputChange }
+            data-testid="attr3-input"
+            type="number"
+          />
         </fieldset>
 
-        <fieldset>
-          <label>
+        <fieldset className="input-group mb-3">
+          <span className="input-group-text">
             Imagem:
-            <input
-              name="cardImage"
-              value={ cardImage }
-              onChange={ onInputChange }
-              data-testid="image-input"
-              type="text"
-            />
-          </label>
+          </span>
+          <input
+            className="form-control"
+            name="cardImage"
+            value={ cardImage }
+            onChange={ onInputChange }
+            data-testid="image-input"
+            type="text"
+          />
         </fieldset>
 
         <fieldset>
@@ -110,6 +117,7 @@ class Form extends React.Component {
               <option>normal</option>
               <option>raro</option>
               <option>muito raro</option>
+              <option selected> </option>
             </select>
           </label>
         </fieldset>
@@ -118,6 +126,7 @@ class Form extends React.Component {
           <label>
             Super Trunfo:
             <input
+              className="checkbox"
               name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
@@ -148,7 +157,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

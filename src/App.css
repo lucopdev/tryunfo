@@ -1,8 +1,28 @@
 * {
+  box-sizing: border-box;
+  font-size: 12px;
   margin: 0;
   padding: 0;
 }
 
+h1 {
+  text-align: center;
+}
+
 body {
-  background-color: rgb(37, 37, 46);
+  align-items: center;
+  background-image: url('./img/mudassir.jpg');
+  display: flex;
+  justify-content: center;
+}
+
+.app-main {
+  align-items: center;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 5px 5px 20px black;
+  display: flex;
+  height: 600px;
+  justify-content: space-evenly;
+  width: 70vw;
 }
