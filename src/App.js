@@ -10,6 +10,7 @@ class App extends React.Component {
     super();
 
     this.state = {
+      filterInput: '',
       cardBoard: [],
       cardName: '',
       cardDescription: '',
@@ -126,9 +127,25 @@ class App extends React.Component {
     }, this.testHasTrunfo);
   };
 
+  searchCard = ({ target }) => {
+    const { value } = target;
+    this.setState({
+      filterInput: value,
+    });
+  };
+
+  filteredCardList = () => {
+    const { cardBoard, filterInput } = this.state;
+    return cardBoard.filter((card) => {
+      console.log(card.cardName.toUpperCase().includes(filterInput));
+      if (filterInput === '') return cardBoard;
+      return card.cardName.toLowerCase().includes(filterInput.toLowerCase());
+    });
+  };
+
   render() {
     const {
-      cardBoard,
+      filterInput,
       cardName,
       cardDescription,
       cardAttr1,
@@ -143,7 +160,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Tryunfo</h1>
+        <h1 className="hero-title">Tryunfo</h1>
         <main className="app-main">
           <section className="insert-card">
             <Form
@@ -176,14 +193,21 @@ class App extends React.Component {
           <section className="search-section">
             <label>
               Pesquise um card
-              <input className="search" />
+              <input
+                data-testid="name-filter"
+                className="search"
+                type="text"
+                name="filterInput"
+                value={ filterInput }
+                onChange={ this.searchCard }
+              />
             </label>
           </section>
           <section className="card-board">
-            { cardBoard
+            { this.filteredCardList()
               .map((card, index) => (
                 <CardList
-                  key={ index }
+                  key={ card.cardName }
                   card={ card }
                   onclickDelete={ () => this.onclickDelete(index) }
                 />

@@ -4,13 +4,6 @@ import Card from './Card';
 import './CardList.css';
 
 class CardList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-
-    };
-  }
-
   render() {
     const { card, onclickDelete } = this.props;
     const {
