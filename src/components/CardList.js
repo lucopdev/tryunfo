@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import './CardList.css';
 
 class CardList extends React.Component {
   constructor() {
@@ -11,7 +12,7 @@ class CardList extends React.Component {
   }
 
   render() {
-    const { card } = this.props;
+    const { card, onclickDelete } = this.props;
     const {
       cardName,
       cardDescription,
@@ -22,17 +23,27 @@ class CardList extends React.Component {
       cardRare,
       cardTrunfo,
     } = card;
+
     return (
-      <Card
-        cardName={ cardName }
-        cardDescription={ cardDescription }
-        cardAttr1={ cardAttr1 }
-        cardAttr2={ cardAttr2 }
-        cardAttr3={ cardAttr3 }
-        cardImage={ cardImage }
-        cardRare={ cardRare }
-        cardTrunfo={ cardTrunfo }
-      />
+      <section className="unit">
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
+        <button
+          data-testid="delete-button"
+          type="button"
+          onClick={ onclickDelete }
+        >
+          Excluir
+        </button>
+      </section>
     );
   }
 }
@@ -48,6 +59,7 @@ CardList.propTypes = {
     cardRare: PropTypes.string.isRequired,
     cardTrunfo: PropTypes.bool.isRequired,
   }).isRequired,
+  onclickDelete: PropTypes.func.isRequired,
 };
 
 export default CardList;

@@ -43,10 +43,10 @@ body {
   width: 100%;
 }
 
-
 .card-board {
   display: flex;
-  margin-top: 200px;
+  flex-flow: wrap;
+  margin-top: 150px;
 }
 
 .input-group-text {

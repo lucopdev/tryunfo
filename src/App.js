@@ -1,9 +1,9 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import CardList from './components/CardList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import CardList from './components/CardList';
 
 class App extends React.Component {
   constructor() {
@@ -103,7 +103,7 @@ class App extends React.Component {
       cardTrunfo,
     };
     this.setState((currentState) => (
-      { cardBoard: [addCard, ...currentState.cardBoard],
+      { cardBoard: [...currentState.cardBoard, addCard],
         cardName: '',
         cardDescription: '',
         cardAttr1: 0,
@@ -112,8 +112,18 @@ class App extends React.Component {
         cardImage: '',
         cardRare: 'normal',
         cardTrunfo: false,
+        isSaveButtonDisabled: true,
       }
     ), this.testHasTrunfo);
+  };
+
+  onclickDelete = (index) => {
+    const { cardBoard } = this.state;
+    const cardBoardCPY = cardBoard.slice();
+    cardBoardCPY.splice(index, 1);
+    this.setState({
+      cardBoard: cardBoardCPY,
+    }, this.testHasTrunfo);
   };
 
   render() {
@@ -130,6 +140,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
+
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -162,12 +173,19 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
             />
           </section>
+          <section className="search-section">
+            <label>
+              Pesquise um card
+              <input className="search" />
+            </label>
+          </section>
           <section className="card-board">
             { cardBoard
               .map((card, index) => (
                 <CardList
                   key={ index }
                   card={ card }
+                  onclickDelete={ () => this.onclickDelete(index) }
                 />
               ))}
           </section>
