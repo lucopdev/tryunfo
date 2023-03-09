@@ -106,8 +106,10 @@ class Form extends React.Component {
             />
           </fieldset>
 
-          <label>
-            Selecione a raridade
+          <section className="select-check-container">
+            <span className="select-span">
+              Raridade
+            </span>
             <select
               className="form-select"
               aria-label="Default select example"
@@ -120,28 +122,28 @@ class Form extends React.Component {
               <option value="raro">raro</option>
               <option value="muito raro">muito raro</option>
             </select>
-          </label>
 
-          <fieldset>
-            {
-              hasTrunfo ? <em>Você já tem um Super Trunfo em seu baralho</em>
-                : (
-                  <label>
-                    Super Trunfo:
-                    <input
-                      className="checkbox"
-                      name="cardTrunfo"
-                      checked={ cardTrunfo }
-                      onChange={ onInputChange }
-                      data-testid="trunfo-input"
-                      type="checkbox"
-                    />
-                  </label>
-                )
-            }
-          </fieldset>
-
+            <section className="checkbox-container">
+              {
+                hasTrunfo ? <em>Você já tem um Super Trunfo em seu baralho</em>
+                  : (
+                    <fieldset className="checkbox-fieldset">
+                      <span>Super Trunfo?</span>
+                      <input
+                        className="checkbox"
+                        name="cardTrunfo"
+                        checked={ cardTrunfo }
+                        onChange={ onInputChange }
+                        data-testid="trunfo-input"
+                        type="checkbox"
+                      />
+                    </fieldset>
+                  )
+              }
+            </section>
+          </section>
           <button
+            className="save-button"
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
             type="submit"

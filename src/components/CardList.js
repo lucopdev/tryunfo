@@ -30,6 +30,7 @@ class CardList extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <button
+          className="delete-button"
           data-testid="delete-button"
           type="button"
           onClick={ onclickDelete }

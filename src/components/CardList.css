@@ -5,3 +5,15 @@
   justify-content: center;
   margin: 10px;
 }
+
+.delete-button {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.699);
+  margin-top: 5px;
+  width: 50px;
+}
+
+.delete-button:active {
+  background-color: rgb(130, 174, 185);
+}

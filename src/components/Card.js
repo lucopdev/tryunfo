@@ -20,8 +20,6 @@ class Card extends React.Component {
         <section className="main-section">
           <h2 className="card-title" data-testid="name-card">{ cardName }</h2>
           <div className="img-container">
-            { cardTrunfo
-              ? <p className="trunfo" data-testid="trunfo-card">Super Trunfo</p> : ''}
             { cardImage ? <img
               className="card-img"
               data-testid="image-card"
@@ -37,18 +35,20 @@ class Card extends React.Component {
           </p>
           <div className="ps-container">
             <div className="p-container">
-              <span>Attr01 ...........................</span>
+              <span className="card-span">Força ..................</span>
               <p data-testid="attr1-card">{ cardAttr1 }</p>
             </div>
             <div className="p-container">
-              <span>Attr02 ...........................</span>
+              <span className="card-span">Agilidade ...........</span>
               <p data-testid="attr2-card">{ cardAttr2 }</p>
             </div>
             <div className="p-container">
-              <span>Attr03 ...........................</span>
+              <span className="card-span">Especial .............</span>
               <p data-testid="attr3-card">{ cardAttr3 }</p>
             </div>
             <p data-testid="rare-card">{ cardRare }</p>
+            { cardTrunfo
+              ? <p className="trunfo" data-testid="trunfo-card">Super Trunfo</p> : ''}
           </div>
         </section>
       </main>

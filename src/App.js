@@ -8,7 +8,6 @@ import './App.css';
 class App extends React.Component {
   constructor() {
     super();
-
     this.state = {
       trunfoFilterInput: false,
       rareFilterInput: 'todas',
@@ -160,7 +159,6 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
-
     return (
       <div>
         <h1 className="hero-title">Tryunfo</h1>
@@ -194,20 +192,21 @@ class App extends React.Component {
             />
           </section>
           <section className="search-section">
-            <label>
-              Filtro de busca
+            <label className="search-name-label">
+              Busca por nome
               <input
                 disabled={ trunfoFilterInput }
                 data-testid="name-filter"
-                className="search"
+                className="search-name-input"
                 type="text"
                 name="nameFilterInput"
                 value={ nameFilterInput }
                 onChange={ this.onInputChange }
               />
             </label>
-
+            <span className="rare-search-span">Buscar raridade</span>
             <select
+              className="rare-search-select"
               disabled={ trunfoFilterInput }
               name="rareFilterInput"
               data-testid="rare-filter"
@@ -219,9 +218,10 @@ class App extends React.Component {
               <option value="raro">raro</option>
               <option value="muito raro">muito raro</option>
             </select>
-            <label>
+            <label className="st-search-label">
               Super Trunfo
               <input
+                className="st-search-input"
                 name="trunfoFilterInput"
                 value={ trunfoFilterInput }
                 data-testid="trunfo-filter"
