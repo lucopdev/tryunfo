@@ -10,7 +10,9 @@ class App extends React.Component {
     super();
 
     this.state = {
-      filterInput: '',
+      trunfoFilterInput: false,
+      rareFilterInput: 'todas',
+      nameFilterInput: '',
       cardBoard: [],
       cardName: '',
       cardDescription: '',
@@ -55,30 +57,22 @@ class App extends React.Component {
       !this.isPossibleSum(),
     ];
     const noErrors = errorsList.every((error) => error === false);
-    this.setState({
-      isSaveButtonDisabled: !noErrors,
-    });
+    this.setState({ isSaveButtonDisabled: !noErrors });
   };
 
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    }, this.handleErrors);
+    this.setState({ [name]: value }, this.handleErrors);
   };
 
   testHasTrunfo = () => {
     const { cardBoard } = this.state;
     const findedTrunfo = cardBoard.find((card) => card.cardTrunfo === true);
     if (findedTrunfo) {
-      this.setState({
-        hasTrunfo: true,
-      });
+      this.setState({ hasTrunfo: true });
     } else {
-      this.setState({
-        hasTrunfo: false,
-      });
+      this.setState({ hasTrunfo: false });
     }
   };
 
@@ -122,30 +116,39 @@ class App extends React.Component {
     const { cardBoard } = this.state;
     const cardBoardCPY = cardBoard.slice();
     cardBoardCPY.splice(index, 1);
-    this.setState({
-      cardBoard: cardBoardCPY,
-    }, this.testHasTrunfo);
+    this.setState({ cardBoard: cardBoardCPY }, this.testHasTrunfo);
   };
 
-  searchCard = ({ target }) => {
-    const { value } = target;
-    this.setState({
-      filterInput: value,
-    });
+  nameFilteredList = () => {
+    const { cardBoard, nameFilterInput } = this.state;
+    return cardBoard.filter((card) => (
+      card.cardName.toLowerCase().includes(nameFilterInput.toLowerCase())));
   };
 
-  filteredCardList = () => {
-    const { cardBoard, filterInput } = this.state;
-    return cardBoard.filter((card) => {
-      console.log(card.cardName.toUpperCase().includes(filterInput));
-      if (filterInput === '') return cardBoard;
-      return card.cardName.toLowerCase().includes(filterInput.toLowerCase());
-    });
+  rareFilteredList = () => {
+    const { cardBoard, rareFilterInput } = this.state;
+    return cardBoard.filter((card) => (
+      card.cardRare.toLowerCase() === rareFilterInput.toLowerCase()));
+  };
+
+  stFilteredList = () => {
+    const { cardBoard, trunfoFilterInput } = this.state;
+    return cardBoard.filter((card) => card.cardTrunfo === trunfoFilterInput);
+  };
+
+  searchFilter = () => {
+    const { cardBoard, nameFilterInput, rareFilterInput, trunfoFilterInput } = this.state;
+    if (nameFilterInput !== '') return this.nameFilteredList();
+    if (rareFilterInput !== 'todas') return this.rareFilteredList();
+    if (trunfoFilterInput === true) return this.stFilteredList();
+    return cardBoard;
   };
 
   render() {
     const {
-      filterInput,
+      trunfoFilterInput,
+      rareFilterInput,
+      nameFilterInput,
       cardName,
       cardDescription,
       cardAttr1,
@@ -192,19 +195,43 @@ class App extends React.Component {
           </section>
           <section className="search-section">
             <label>
-              Pesquise um card
+              Filtro de busca
               <input
+                disabled={ trunfoFilterInput }
                 data-testid="name-filter"
                 className="search"
                 type="text"
-                name="filterInput"
-                value={ filterInput }
-                onChange={ this.searchCard }
+                name="nameFilterInput"
+                value={ nameFilterInput }
+                onChange={ this.onInputChange }
+              />
+            </label>
+
+            <select
+              disabled={ trunfoFilterInput }
+              name="rareFilterInput"
+              data-testid="rare-filter"
+              value={ rareFilterInput }
+              onChange={ this.onInputChange }
+            >
+              <option value="todas">todas</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+            <label>
+              Super Trunfo
+              <input
+                name="trunfoFilterInput"
+                value={ trunfoFilterInput }
+                data-testid="trunfo-filter"
+                type="checkbox"
+                onChange={ this.onInputChange }
               />
             </label>
           </section>
           <section className="card-board">
-            { this.filteredCardList()
+            { this.searchFilter()
               .map((card, index) => (
                 <CardList
                   key={ card.cardName }

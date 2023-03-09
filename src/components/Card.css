@@ -1,6 +1,7 @@
 .card-main {
+  background-color: antiquewhite;
   border-radius: 10px;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.349);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.678);
   display: flex;
   flex-direction: column;
   height: 500px;
@@ -18,25 +19,39 @@
 }
 
 .card-title {
+  align-items: center;
   background-color: rgb(2, 128, 160);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: white;
+  display: flex;
   font-size: 30px;
-  height: 50px;
+  height: 40px;
+  justify-content: flex-end;
   padding-right: 10px;
-  text-align: right;
   width: 100%;
 }
 
 .img-container {
   background-color: rgb(255, 235, 51);
-  height: 180px;
+  height: 210px;
   position: relative;
 }
 
 .empty, .card-img {
-  height: 180px;
+  height: 100%;
+  width: 100%;
+}
+
+.description {
+  background-color: rgba(2, 128, 160, 0.637);
+  border: 1px solid white;
+  border-radius: 0;
+  color: white;
+  font-weight: 400;
+  height: 60px;
+  padding: 3px;
+  text-align: center;
   width: 100%;
 }
 
@@ -47,17 +62,15 @@
   border-bottom-right-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 150px;
-  justify-content: center;
-  padding-right: 20px;
-  padding-top: 12px;
+  height: 140px;
+  justify-content: space-around;
+  padding: 50px;
   width: 100%;
 }
 
 .p-container {
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
   width: 100%;
 }
 
@@ -70,19 +83,7 @@ p {
   font-weight: 700;
   height: 15px;
   justify-content: center;
-  width: 80px;
-}
-
-.description {
-  background-color: rgba(2, 128, 160, 0.637);
-  border: 2px solid white;
-  border-radius: 0;
-  color: white;
-  font-weight: 400;
-  height: 70px;
-  padding: 3px;
-  text-align: center;
-  width: 100%;
+  width: 50px;
 }
 
 .trunfo {
